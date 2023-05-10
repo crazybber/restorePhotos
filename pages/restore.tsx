@@ -168,6 +168,18 @@ const Home: NextPage = () => {
                   day for free.
                 </div>
                 <button
+                  onClick={() => signIn("Github")}
+                  className="bg-gray-200 text-black font-semibold py-3 px-6 rounded-2xl flex items-center space-x-2"
+                >
+                  <Image
+                    src="/Github.png"
+                    width={20}
+                    height={20}
+                    alt="Github's logo"
+                  />
+                  <span>Sign in with Github</span>
+                </button>
+                <button
                   onClick={() => signIn("google")}
                   className="bg-gray-200 text-black font-semibold py-3 px-6 rounded-2xl flex items-center space-x-2"
                 >
