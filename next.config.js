@@ -8,7 +8,7 @@ module.exports = {
     return [
       {
         source: "/github",
-        destination: "https://github.com/Nutlope/restorePhotos",
+        destination: "https://github.com/crazybber/restorePhotos",
         permanent: false,
       },
       {

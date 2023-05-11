@@ -15,7 +15,7 @@ import NSFWPredictor from "../utils/nsfwCheck";
 import va from "@vercel/analytics";
 import { useSession, signIn } from "next-auth/react";
 import useSWR from "swr";
-import { Rings } from "react-loader-spinner";
+//import { Rings } from "react-loader-spinner";
 
 // Configuration for the uploader
 const uploader = Uploader({
@@ -105,10 +105,10 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header photo={session?.user?.image || undefined} />
+      <Header photo={session?.user?.image || undefined} /> 
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4 sm:mb-0 mb-8">
         <a
-          href="https://twitter.com/nutlope/status/1626074563481051136"
+          href="https://github.com/crazybber"
           target="_blank"
           rel="noreferrer"
           className="border rounded-2xl py-1 px-4 text-slate-500 text-sm mb-5 hover:text-slate-600 transition duration-300 ease-in-out"
@@ -144,7 +144,8 @@ const Home: NextPage = () => {
               restored={restoredImage!}
             />
           )}
-          {status === "loading" ? (
+          {!originalPhoto && <UploadDropZone />}
+          {/* {status === "loading" ? (
             <div className="max-w-[670px] h-[250px] flex justify-center items-center">
               <Rings
                 height="100"
@@ -193,7 +194,7 @@ const Home: NextPage = () => {
                 </button>
               </div>
             )
-          )}
+          )} */}
           {originalPhoto && !restoredImage && (
             <Image
               alt="original photo"

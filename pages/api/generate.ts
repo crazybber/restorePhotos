@@ -26,13 +26,13 @@ export default async function handler(
 ) {
   // Check if user is logged in
   const session = await getServerSession(req, res, authOptions);
-  if (!session || !session.user) {
-    return res.status(500).json("Login to upload.");
-  }
+  // if (!session || !session.user) {
+  //   return res.status(500).json("Login to upload.");
+  // }
 
-  // Rate Limiting by user email
+  //Rate Limiting by user email
   if (ratelimit) {
-    const identifier = session.user.email;
+    const identifier = session?.user?.email;
     const result = await ratelimit.limit(identifier!);
     res.setHeader("X-RateLimit-Limit", result.limit);
     res.setHeader("X-RateLimit-Remaining", result.remaining);
@@ -54,6 +54,7 @@ export default async function handler(
   }
 
   const imageUrl = req.body.imageUrl;
+  process.env.REPLICATE_API_KEY = "r8_5U1WgiaUgnMXLuPEn8ZRBJLfF5WiL4r0ayDBA";
   // POST request to Replicate to start the image restoration generation process
   let startResponse = await fetch("https://api.replicate.com/v1/predictions", {
     method: "POST",
@@ -69,6 +70,9 @@ export default async function handler(
   });
 
   let jsonStartResponse = await startResponse.json();
+
+  console.log(jsonStartResponse);
+
   let endpointUrl = jsonStartResponse.urls.get;
 
   // GET request to get the status of the image restoration process & return the result when it's ready
