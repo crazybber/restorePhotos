@@ -8,13 +8,13 @@ export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     GitHub({
-      clientId: process.env.GITHUB_ID|| "",
-      clientSecret: process.env.GITHUB_SECRET|| "",
+      clientId: process.env.GITHUB_CLIENT_ID|| "264bba926420ec1c1808",
+      clientSecret: process.env.GITHUB_SECRET|| "95211ac80e6b1a75455534af26a0dba06d9ad891",
     }),
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID || "",
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
-    }),
+    // GoogleProvider({
+    //   clientId: process.env.GOOGLE_CLIENT_ID || "",
+    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+    // }),
   ],
 };
 
