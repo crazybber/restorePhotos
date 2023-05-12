@@ -172,7 +172,7 @@ const Home: NextPage = () => {
                   className="bg-gray-200 text-black font-semibold py-3 px-6 rounded-2xl flex items-center space-x-2"
                 >
                   <Image
-                    src="/Github.png"
+                    src="/github.png"
                     width={20}
                     height={20}
                     alt="Github's logo"
