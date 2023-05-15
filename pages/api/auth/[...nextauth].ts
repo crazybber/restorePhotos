@@ -1,5 +1,5 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
-import GitHub from 'next-auth/providers/github'
+import GitHubProvider from 'next-auth/providers/github'
 //import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "../../../lib/prismadb";
@@ -7,15 +7,17 @@ import prisma from "../../../lib/prismadb";
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
-    GitHub({
-      clientId: process.env.GITHUB_CLIENT_ID|| "264bba926420ec1c1808",
-      clientSecret: process.env.GITHUB_SECRET|| "95211ac80e6b1a75455534af26a0dba06d9ad891",
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID|| "",
+      clientSecret: process.env.GITHUB_SECRET|| "",
     }),
     // GoogleProvider({
     //   clientId: process.env.GOOGLE_CLIENT_ID || "",
     //   clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
     // }),
   ],
+    // add random secret to options(安全验证和加密的必要参数)
+    secret: process.env.NEXTAUTH_SECRET|| "",
 };
 
 export default NextAuth({
